@@ -11,6 +11,11 @@
 <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
 <link href="css/responsive.css" rel="stylesheet" type="text/css">
 <link href="css/animate.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.9.2.custom.css">
+<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.0.custom">
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.css">
+<link rel="stylesheet" type="text/css" href="jquery-ui.theme.css">
+<link rel="stylesheet" type="text/css" href="bootstrap-datepicker.css">
 
 <link href='http://fonts.googleapis.com/css?family=Lato:400,900,700,700italic,400italic,300italic,300,100italic,100,900italic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Dosis:400,500,700,800,600,300,200' rel='stylesheet' type='text/css'>
@@ -24,7 +29,9 @@
 <script type="text/javascript" src="js/jquery.isotope.js"></script>
 <script type="text/javascript" src="js/wow.js"></script>
 <script type="text/javascript" src="js/classie.js"></script>
-
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
 
 <!--[if lt IE 9]>
     <script src="js/respond-1.1.0.min.js"></script>
@@ -61,6 +68,222 @@ function resizeText() {
 	$(".divclass").css("font-size", newFontSizeTitle)
 }
 </script>
+
+<script>
+$('.datepicker').datepicker({
+    format: 'yyyy/mm/dd',
+    startDate: '-3d'
+});
+</script>
+<script>
+
+$(function() {
+    var drzave = [
+      "Afghanistan",
+      "Albania",
+      "Algeria",
+      "Andorra",
+      "Angola",
+      "Antigua & Deps",
+      "Argentina",
+      "Armenia",
+      "Australia",
+      "Austria",
+      "Azerbaijan",
+      "Bahamas",
+      "Bahrain",
+      "Bangladesh",
+      "Barbados",
+      "Belarus",
+      "Belgium",
+      "Belize",
+      "Benin",
+      "Bhutan",
+      "Bolivia",
+      "Bosnia & Herzegovina",
+      "Botswana",
+      "Brazil",
+      "Brunei",
+      "Bulgaria",
+      "Burkina",
+      "Burundi",
+      "Cambodia",
+      "Cameroon",
+      "Canada",
+      "Cape Verde",
+      "Central African Rep",
+      "Chad",
+      "Chile",
+      "China",
+      "Colombia",
+      "Comoros",
+      "Congo",
+      "Costa Rica",
+      "Croatia",
+      "Cuba",
+      "Cyprus",
+      "Czech Republic",
+      "Denmark",
+      "Djibouti",
+      "Dominica",
+      "Dominican Republic",
+      "East Timor",
+      "Ecuador",
+      "Egypt",
+      "El Salvador",
+      "Equatorial Guinea",
+      "Eritrea",
+      "Estonia",
+      "Ethiopia",
+      "Fiji",
+      "Finland",
+      "France",
+      "Gabon",
+      "Gambia",
+      "Georgia",
+      "Germany",
+      "Ghana",
+      "Greece",
+      "Grenada",
+      "Guatemala",
+      "Guinea",
+      "Guinea-Bissau",
+      "Guyana",
+      "Haiti",
+      "Honduras",
+      "Hungary",
+      "Iceland",
+      "India",
+      "Indonesia",
+      "Iran",
+      "Iraq",
+      "Ireland",
+      "Israel",
+      "Italy",
+      "Ivory Coast",
+      "Jamaica",
+      "Japan",
+      "Jordan",
+      "Kazakhstan",
+      "Kenya",
+      "Kiribati",
+      "Korea North",
+      "Korea South",
+      "Kosovo",
+      "Kuwait",
+      "Kyrgyzstan",
+      "Laos",
+      "Latvia",
+      "Lebanon",
+      "Lesotho",
+      "Liberia",
+      "Libya",
+      "Liechtenstein",
+      "Lithuania",
+      "Luxembourg",
+      "Macedonia",
+      "Madagascar",
+      "Malawi",
+      "Malaysia",
+      "Maldives",
+      "Mali",
+      "Malta",
+      "Marshall Islands",
+      "Mauritania",
+      "Mauritius",
+      "Mexico",
+      "Micronesia",
+      "Moldova",
+      "Monaco",
+      "Mongolia",
+      "Montenegro",
+      "Morocco",
+      "Mozambique",
+      "Myanmar",
+      "Namibia",
+      "Nauru",
+      "Nepal",
+      "Netherlands",
+      "New Zealand",
+      "Nicaragua",
+      "Niger",
+      "Nigeria",
+      "Norway",
+      "Oman",
+      "Pakistan",
+      "Palau",
+      "Panama",
+      "Papua New Guinea",
+      "Paraguay",
+      "Peru",
+      "Philippines",
+      "Poland",
+      "Portugal",
+      "Qatar",
+      "Romania",
+      "Russian Federation",
+      "Rwanda",
+      "St Kitts & Nevis",
+      "St Lucia",
+      "Saint Vincent & the Grenadines",
+      "Samoa",
+      "San Marino",
+      "Sao Tome & Principe",
+      "Saudi Arabia",
+      "Senegal",
+      "Serbia",
+      "Seychelles",
+      "Sierra Leone",
+      "Singapore",
+      "Slovakia",
+      "Slovenia",
+      "Solomon Islands",
+      "Somalia",
+      "South Africa",
+      "South Sudan",
+      "Spain",
+      "Sri Lanka",
+      "Sudan",
+      "Suriname",
+      "Swaziland",
+      "Sweden",
+      "Switzerland",
+      "Syria",
+      "Taiwan",
+      "Tajikistan",
+      "Tanzania",
+      "Thailand",
+      "Togo",
+      "Tonga",
+      "Trinidad & Tobago",
+      "Tunisia",
+      "Turkey",
+      "Turkmenistan",
+      "Tuvalu",
+      "Uganda",
+      "Ukraine",
+      "United Arab Emirates",
+      "United Kingdom",
+      "United States of America",
+      "Uruguay",
+      "Uzbekistan",
+      "Vanuatu",
+      "Vatican City",
+      "Venezuela",
+      "Vietnam",
+      "Yemen",
+      "Zambia",
+      "Zimbabwe",
+      ];
+    $( "#country" ).autocomplete({
+      source: drzave
+    });
+  });
+</script>
+
+<script type="text/javascript">
+    $(".bday").datetimepicker({format: 'yyyy-mm-dd'});
+</script>   
 </head>
 <body>
 
@@ -94,64 +317,101 @@ function resizeText() {
 
 <!--start form-->
 
-<section  id="form">
+
+<section id="form">
   <div class="container">
     <h2>Add contact</h2>
-      <div class="row">
-        <!--Pri formi dodaj svojo stran za potrditev contacta? ne iste?-->
-          <form method="post" action="contacts_list.php" data-toggle="validator" role="form" autocomplete="off">
+    <div class="row">
+      <form method="post" action="contact_add.php" data-toggle="validator" role="form" autocomplete="off">
+        <div class="col-xs-12 col-sm-6 col-lg-4 col-md-4">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input name="name" type="text" pattern="^[A-Za-z]{2,}$" maxlength="15" class="form-control" id="name" placeholder="Name (eg. Mike)" data-error="Please input a correct name!" required>
+            <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group">
+            <label for="surname">Surname</label>
+            <input name="surname" type="text" pattern="^[A-Za-z]{2,}$" maxlength="25" class="form-control" id="surname" placeholder="Surname (eg. Millers)" data-error="Please input a correct surname!" required>
+            <div class="help-block with-errors"></div>
+            </div>
+
+            <div class="input-group date" data-provide="datepicker">
+            <label for="birthday">Birthday</label>
+            <input name="birthday" id="birthday" type="text" class="form-control" data-date-format="yyyy/mm/dd">
+            <div class="input-group-addon">
+            <span class="glyphicon glyphicon-th"></span>
+            </div>
+            </div>
 
 
-              <div class="col-xs-12 col-sm-6 col-lg-4 col-md-4" style="background-color:yellow;">
-                <div class="form-group">
-                <label for="name">Name</label>
-                <input name="name" type="text" pattern="^[A-Za-z]{2,}$" maxlength="15" class="form-control" id="name" placeholder="Name" data-error="Please input a correct name!" required>
-                <div class="help-block with-errors"></div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-lg-4 col-md-4">
+        <div class="form-group">
+                  <label for="address_1">Address Line 1</label>
+                  <input name="address_1" type="text" pattern="^[A-Za-z0-9\s]{3,}$" maxlength="150" class="form-control" id="address_1" placeholder="Address Line 1" data-error="Please input a correct address!" required="">
+                  <div class="help-block with-errors"></div>
                 </div>
-
                 <div class="form-group">
-                <label for="surname">Surname</label>
-                <input name="surname" type="text" pattern="^[A-Za-z]{2,}$" maxlength="25" class="form-control" id="surname" placeholder="Surname" data-error="Please input a correct surname!" required>
-                <div class="help-block with-errors"></div>
+                <label for="address_2">Address Line 2</label>
+                  <input name="address_2" type="text" pattern="^[A-Za-z0-9\s]{,}$" maxlength="150" class="form-control" id="address_2" placeholder="Address Line 2" data-error="Please input a correct address!">
+                  <div class="help-block with-errors"></div>
                 </div>
-
-                <!-- ADD BIRTHDAY -->
-
-
+                <div class="form-group">
+                <label for="city">City / Town</label>
+                  <input name="city" type="text" pattern="^[A-Za-z0-9\s]{3,}$" maxlength="150" class="form-control" id="city" placeholder="City / Town" data-error="Please input a correct address!" required="">
+                  <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                <label for="region">State / Province / Region</label>
+                  <input name="region" type="text" pattern="^[A-Za-z0-9\s]{3,}$" maxlength="150" class="form-control" id="region" placeholder="State / Province / Region" data-error="Please input a correct address!" required="">
+                  <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                <label for="zip">ZIP / Postal code</label>
+                  <input name="zip" type="text" pattern="^[0-9]{4,}$" maxlength="5" class="form-control" id="zip" placeholder="State / Province / Region" data-error="Only numbers, maximum 5 characters!" required="">
+                  <div class="help-block with-errors"></div>
+                </div>
+                <div class="ui-widget"> <!--TODO: BOOTSTRAP UI! #IMPORTANT-->
+                  <label for="country">Country</label>
+                    <div class="form-group">
+                      <input name="country" id="country">
+                    </div>
+                </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-4 col-md-4">
+        <div class="form-group">
+                  <label for="facebook">Facebook</label>
+                  <input name="facebook" type="text" maxlength="250" class="form-control" id="facebook" placeholder="https://www.facebook.com/mikemillers" data-error="Enter your Facebook link">
+                  <div class="help-block with-errors"></div>
               </div>
 
-
-             
-
-
-
-              <div class="col-xs-12 col-sm-6 col-lg-4 col-md-4" style="background-color:red;">
               <div class="form-group">
-              
+                  <label for="twitter">Twitter</label>
+                  <input name="twitter" type="text" maxlength="250" class="form-control" id="twitter" placeholder="https://twitter.com/mikemillers" data-error="Enter your Twitter link">
+                  <div class="help-block with-errors"></div>
               </div>
-              </div>
 
-
-
-              <div class="col-xs-12 col-sm-6 col-lg-4 col-md-4" style="background-color:blue;">
               <div class="form-group">
-              
+                  <label for="linkedin">LinkedIn</label>
+                  <input name="linkedin" type="text" maxlength="250" class="form-control" id="linkedin" placeholder="https://www.linkedin.com/in/mike-millers-1a2b1234" data-error="Enter your LinkedIn link">
+                  <div class="help-block with-errors"></div>
               </div>
               </div>
-          </form>
+        </div>
 
-          <!--
-            <input class="input-text animated wow flipInY delay-02s" type="text" name="" value="Your Name *" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">
-            <input class="input-text animated wow flipInY delay-04s" type="text" name="" value="Your E-mail *" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">
-            <textarea class="input-text text-area animated wow flipInY delay-06s" cols="0" rows="0" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">Your Message *</textarea>
-            <input class="input-btn animated wow flipInY delay-08s" type="submit" value="send message">
-            -->
-          </div>
-      </div>
+<div class="form-group"><!--buttons-->
+                <button type="submit" class="btn btn-primary">Send</button>
+                <button type="reset" class="btn btn-default">Reset</button>
+              </div>
+
+
+
+
+      </form>
     </div>
   </div>
 </section>
-
 
 
 
@@ -182,7 +442,7 @@ function resizeText() {
         
     });
 </script> 
-<script>
+<!--<script>
     wow = new WOW(
       {
         animateClass: 'animated',
@@ -198,7 +458,7 @@ function resizeText() {
 	  section.className = 'wow lightSpeedIn';
       this.parentNode.insertBefore(section, this);
     };
-  </script> 
+  </script> -->
 <script type="text/javascript">
 	$(window).load(function(){
 		
