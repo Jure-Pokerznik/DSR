@@ -3,7 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, maximum-scale=1">
-<title>Contactify - Add Contact</title>
+<title>Contactify - Add Event</title>
+<!--jQuerry UI Bootstrap from https://jquery-ui-bootstrap.github.io/jquery-ui-bootstrap/-->
+<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.9.2.custom.css">
+<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.0.custom">
+
 <link rel="icon" href="favicon.png" type="image/png">
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -11,8 +15,6 @@
 <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
 <link href="css/responsive.css" rel="stylesheet" type="text/css">
 <link href="css/animate.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.9.2.custom.css">
-<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.0.custom">
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.css">
 <link rel="stylesheet" type="text/css" href="jquery-ui.theme.css">
 <link rel="stylesheet" type="text/css" href="bootstrap-datepicker.css">
@@ -67,13 +69,6 @@ function resizeText() {
 	var newFontSizeTitle = Math.floor(fontsizetitle * percentage);
 	$(".divclass").css("font-size", newFontSizeTitle)
 }
-</script>
-
-<script>
-$('.datepicker').datepicker({
-    format: 'yyyy/mm/dd',
-    startDate: '-3d'
-});
 </script>
 <script>
 
@@ -281,6 +276,14 @@ $(function() {
   });
 </script>
 
+<script>
+$('.datepicker').datepicker({
+    format: 'yyyy/mm/dd',
+    startDate: '-3d'
+});
+</script>
+
+
 <script type="text/javascript">
     $(".bday").datetimepicker({format: 'yyyy-mm-dd'});
 </script>   
@@ -317,30 +320,51 @@ $(function() {
 
 <!--start form-->
 
+<!-- 
+Event name = ename
+Contact e-mail = contact_email
+Start date = s_date
+Phone Number: phone_nr
+
+Address Line 1 = address_1
+Address Line 2 = address_2
+City / Town = city
+State / Province / Region = region
+ZIP / Postal Code = zip
+Country = country
+
+Description = description
+-->
+
 
 <section id="form">
   <div class="container">
-    <h2>Add contact</h2>
+    <h2>Add event</h2>
     <div class="row">
-      <form method="post" action="contact_add.php" data-toggle="validator" role="form" autocomplete="off">
+      <form method="post" action="event_add.php" data-toggle="validator" role="form" autocomplete="off">
         <div class="col-xs-12 col-sm-6 col-lg-4 col-md-4">
           <div class="form-group">
-            <label for="name">Name</label>
-            <input name="name" type="text" pattern="^[A-Za-z]{2,}$" maxlength="15" class="form-control" id="name" placeholder="Name (eg. Mike)" data-error="Please input a correct name!" required>
+            <label for="ename">Event name</label>
+            <input name="ename" type="text" pattern="^[A-Za-z]{2,}$" maxlength="50" class="form-control" id="ename" placeholder="Event name (eg. Birthday party)" data-error="Please input a correct event name!" required>
             <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
-            <label for="surname">Surname</label>
-            <input name="surname" type="text" pattern="^[A-Za-z]{2,}$" maxlength="25" class="form-control" id="surname" placeholder="Surname (eg. Millers)" data-error="Please input a correct surname!" required>
+            <label for="contact_email">Contact e-mail</label>
+            <input name="contact_email" type="text" pattern="^[A-Za-z]{2,}$\@" maxlength="80" class="form-control" id="contact_email" placeholder="Email (eg. helpdesk@conectify.com)" data-error="Please input a correct email!" required>
             <div class="help-block with-errors"></div>
             </div>
 
             <div class="input-group date" data-provide="datepicker">
-            <label for="birthday">Birthday</label>
-            <input name="birthday" id="birthday" type="text" class="form-control" data-date-format="yyyy/mm/dd" placeholder="1995-12-23">
+            <label for="s_date">Start date</label>
+            <input name="s_date" id="s_date" type="text" class="form-control" data-date-format="yyyy/mm/dd" placeholder="2017-01-01">
             <div class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
             </div>
+            </div>
+            <div class="form-group">
+            <label for="phone_nr">Phone number</label>
+            <input name="phone_nr" type="text" pattern="^[0-9]{8,}$" maxlength="25" class="form-control" id="phone_nr" placeholder="Phone number (eg. 030102032)" data-error="Please input a correct phone number!" required>
+            <div class="help-block with-errors"></div>
             </div>
 
 
@@ -372,7 +396,7 @@ $(function() {
                   <input name="zip" type="text" pattern="^[0-9]{4,}$" maxlength="5" class="form-control" id="zip" placeholder="ZIP / Postal code" data-error="Only numbers, maximum 5 characters!" required="">
                   <div class="help-block with-errors"></div>
                 </div>
-                <div class="ui-widget"> <!--TODO: BOOTSTRAP UI!-->
+                <div class="ui-widget"> <!--TODO: BOOTSTRAP UI!--> 
                   <label for="country">Country</label>
                     <div class="form-group">
                       <input name="country" id="country">
@@ -381,29 +405,20 @@ $(function() {
         </div>
         <div class="col-xs-12 col-sm-6 col-lg-4 col-md-4">
         <div class="form-group">
-                  <label for="facebook">Facebook</label>
-                  <input name="facebook" type="text" maxlength="250" class="form-control" id="facebook" placeholder="https://www.facebook.com/mikemillers" data-error="Enter your Facebook link">
-                  <div class="help-block with-errors"></div>
+                  <label for="description">Description</label>
+                  <!--<input name="description" type="text" maxlength="250" class="form-control" id="description" placeholder="" data-error="Enter your Facebook link">
+                  <div class="help-block with-errors">-->
+                  <textarea name="description" placeholder="My birthday is going to have great music!" class="form-control" rows="12" id="description"></textarea>
+                  </div>
               </div>
 
-              <div class="form-group">
-                  <label for="twitter">Twitter</label>
-                  <input name="twitter" type="text" maxlength="250" class="form-control" id="twitter" placeholder="https://twitter.com/mikemillers" data-error="Enter your Twitter link">
-                  <div class="help-block with-errors"></div>
-              </div>
-
-              <div class="form-group">
-                  <label for="linkedin">LinkedIn</label>
-                  <input name="linkedin" type="text" maxlength="250" class="form-control" id="linkedin" placeholder="https://www.linkedin.com/in/mike-millers-1a2b1234" data-error="Enter your LinkedIn link">
-                  <div class="help-block with-errors"></div>
-              </div>
-              </div>
-        </div>
-
-<div class="form-group"><!--buttons-->
+              </div><!--class col-xs-12 col-sm-6 col-lg-4 col-md-4-->
+              <div class="form-group"><!--buttons-->
                 <button type="submit" class="btn btn-primary">Send</button>
                 <button type="reset" class="btn btn-default">Reset</button>
               </div>
+        </div><!--form-->
+
 
 
 

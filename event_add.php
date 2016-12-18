@@ -3,14 +3,14 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$world = "conectify"; 
+$world = "conectify";
 $con=mysqli_connect($servername,$username,$password,$world);
 if (mysqli_connect_errno($con)){
   echo "Database problem. Try again later. " . mysqli_connect_error();
 }
 else {
   /*echo "Baza ti dela čuj ";*/
-  mysqli_query($con,"INSERT INTO contacts (name, surname, birthday, address_1, address_2, city, region, zip, country, facebook, twitter, linkedin) VALUES ('$_REQUEST[name]', '$_REQUEST[surname]', '$_REQUEST[birthday]', '$_REQUEST[address_1]', '$_REQUEST[address_2]', '$_REQUEST[city]', '$_REQUEST[region]', '$_REQUEST[zip]', '$_REQUEST[country]', '$_REQUEST[facebook]', '$_REQUEST[twitter]', '$_REQUEST[linkedin]')");
+  mysqli_query($con, "INSERT INTO events (ename, contact_email, s_date, address_1, address_2, city, region, zip, country, description, phone_nr) VALUES ('$_REQUEST[ename]', '$_REQUEST[contact_email]', '$_REQUEST[s_date]', '$_REQUEST[address_1]', '$_REQUEST[address_2]', '$_REQUEST[city]', '$_REQUEST[region]', '$_REQUEST[zip]', '$_REQUEST[country]', '$_REQUEST[description]', '$_REQUEST[phone_nr]')");
 }
 ?>
 <head>
@@ -113,9 +113,10 @@ function resizeText() {
 
 <section id="container">
   <div class="container">
-    <h2>Contact added!</h2>
+    <h2>Event added!</h2>
   </div>
 </section>
+
 <section id="table">
 <div class="row">
   <div class="col-xs-12 col-lg-offset-4 col-md-8 col-sm-12">
@@ -123,15 +124,15 @@ function resizeText() {
 <table class="table">
   <tr>
     <th>Name:</th>
-    <td><?php echo $_POST["name"]; ?></td>
+    <td><?php echo $_POST["ename"]; ?></td>
   </tr>
   <tr>
     <th>Surname:</th>
-    <td><?php echo $_POST["surname"]; ?></td>
+    <td><?php echo $_POST["contact_email"]; ?></td>
   </tr>
   <tr>
     <th>Birthday:</th>
-    <td><?php echo $_POST["birthday"]; ?></td>
+    <td><?php echo $_POST["s_date"]; ?></td>
   </tr>
   <tr>
     <th>Address 1:</th>
@@ -159,22 +160,17 @@ function resizeText() {
   </tr>
   <tr>
     <th>Facebook:</th>
-    <td><?php echo $_POST["facebook"]; ?></td>
+    <td><?php echo $_POST["description"]; ?></td>
   </tr>
   <tr>
     <th>Twitter:</th>
-    <td><?php echo $_POST["twitter"]; ?></td>
-  </tr>
-  <tr>
-    <th>Linkedin:</th>
-    <td><?php echo $_POST["linkedin"]; ?></td>
+    <td><?php echo $_POST["phone_nr"]; ?></td>
   </tr>
 </table>
 </div>
 </div>
 </div>
 </section>
-<footer>
 <div class="container">
     <div class="footer_bottom"> <span>Contactify - Naloga 3 pri predmetu DSR 2016 | <a href="http://bootstraptaste.com/">Bootstrap Themes</a> by BootstrapTaste </span> </div>
     <!-- 
