@@ -105,6 +105,63 @@ function resizeText() {
 
 
 <section id="container">
+
+<?php
+  $servername     = "localhost";
+  $username       = "root";
+  $password       = "";
+  $world          = "conectify";
+  $con            = mysqli_connect($servername,$username,$password,$world);
+    
+?>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+<div class="row">
+<table class="table">
+<thead>
+  <tr>
+    <th>Event</th>
+    <th>E-mail</th>
+    <th>Date</th>
+    <th>Number</th>
+    <th>Address ln. 1</th>
+    <th>Address ln. 2</th>
+    <th>City</th>
+    <th>State</th>
+    <th>ZIP</th>
+    <th>Country</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <?php $events     = mysqli_query($con, "SELECT * FROM events");
+  while ($vrstica = mysqli_fetch_array($events))
+    { 
+    ?>
+
+  <tr>
+    <td><?php echo $vrstica["ename"] ?></td>
+    <td><?php echo $vrstica["contact_email"] ?></td>
+    <td><?php echo $vrstica["s_date"] ?></td>
+    <td><?php echo $vrstica["phone_nr"] ?></td>
+    <td><?php echo $vrstica["address_1"] ?></td>
+    <td><?php echo $vrstica["address_2"] ?></td>
+    <td><?php echo $vrstica["city"] ?></td>
+    <td><?php echo $vrstica["region"] ?></td>
+    <td><?php echo $vrstica["zip"] ?></td>
+    <td><?php echo $vrstica["country"] ?></td>
+    <td><?php echo $vrstica["description"] ?></td>
+  </tr>
+  <?php  } 
+  mysqli_close($con);
+  ?>
+  </tbody>
+  </table>
+</div>
+</div>
+
+
+
+
 </section>
 
 <footer>

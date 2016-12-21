@@ -326,12 +326,12 @@ $(function() {
         <div class="col-xs-12 col-sm-6 col-lg-4 col-md-4">
           <div class="form-group">
             <label for="name">Name</label>
-            <input name="name" type="text" pattern="^[A-Za-z]{2,}$" maxlength="15" class="form-control" id="name" placeholder="Name (eg. Mike)" data-error="Please input a correct name!" required>
+            <input name="name" type="text" pattern="^[A-Za-zšđčćžŠĐČĆŽ\s]{2,}$" maxlength="15" class="form-control" id="name" placeholder="Name (eg. Mike)" data-error="Please input a correct name!" required>
             <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
             <label for="surname">Surname</label>
-            <input name="surname" type="text" pattern="^[A-Za-z]{2,}$" maxlength="25" class="form-control" id="surname" placeholder="Surname (eg. Millers)" data-error="Please input a correct surname!" required>
+            <input name="surname" type="text" pattern="^[A-Za-zšđčćžŠĐČĆŽ]{2,}$" maxlength="25" class="form-control" id="surname" placeholder="Surname (eg. Millers)" data-error="Please input a correct surname!" required>
             <div class="help-block with-errors"></div>
             </div>
 
@@ -349,22 +349,22 @@ $(function() {
         <div class="col-xs-12 col-sm-6 col-lg-4 col-md-4">
         <div class="form-group">
                   <label for="address_1">Address Line 1</label>
-                  <input name="address_1" type="text" pattern="^[A-Za-z0-9\s]{3,}$" maxlength="150" class="form-control" id="address_1" placeholder="Address Line 1" data-error="Please input a correct address!" required="">
+                  <input name="address_1" type="text" pattern="^[A-Za-z0-9šđčćžŠĐČĆŽ\s]{3,}$" maxlength="150" class="form-control" id="address_1" placeholder="Address Line 1" data-error="Please input a correct address!" required="">
                   <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
                 <label for="address_2">Address Line 2</label>
-                  <input name="address_2" type="text" pattern="^[A-Za-z0-9\s]{,}$" maxlength="150" class="form-control" id="address_2" placeholder="Address Line 2" data-error="Please input a correct address!">
+                  <input name="address_2" type="text" pattern="^[A-Za-z0-9šđčćžŠĐČĆŽ\s]{,}$" maxlength="150" class="form-control" id="address_2" placeholder="Address Line 2" data-error="Please input a correct address!">
                   <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
                 <label for="city">City / Town</label>
-                  <input name="city" type="text" pattern="^[A-Za-z0-9\s]{3,}$" maxlength="150" class="form-control" id="city" placeholder="City / Town" data-error="Please input a correct address!" required="">
+                  <input name="city" type="text" pattern="^[A-Za-z0-9šđčćžŠĐČĆŽ\s]{3,}$" maxlength="150" class="form-control" id="city" placeholder="City / Town" data-error="Please input a correct address!" required="">
                   <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
                 <label for="region">State / Province / Region</label>
-                  <input name="region" type="text" pattern="^[A-Za-z0-9\s]{3,}$" maxlength="150" class="form-control" id="region" placeholder="State / Province / Region" data-error="Please input a correct address!" required="">
+                  <input name="region" type="text" pattern="^[A-Za-z0-9šđčćžŠĐČĆŽ\s]{3,}$" maxlength="150" class="form-control" id="region" placeholder="State / Province / Region" data-error="Please input a correct address!" required="">
                   <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">

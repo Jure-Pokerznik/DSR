@@ -5,7 +5,7 @@
 <title>Contactify - Contacts List</title>
 <link rel="icon" href="favicon.png" type="image/png">
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-
+<link rel="stylesheet" href="css/jquery.dataTables.css">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/linecons.css" rel="stylesheet" type="text/css">
 <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
@@ -18,10 +18,15 @@
 <link rel="stylesheet" type="text/css" href="bootstrap-datepicker.css">
 
 
+
+
 <link href='http://fonts.googleapis.com/css?family=Lato:400,900,700,700italic,400italic,300italic,300,100italic,100,900italic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Dosis:400,500,700,800,600,300,200' rel='stylesheet' type='text/css'>
 
 <!--[if IE]><style type="text/css">.pie {behavior:url(PIE.htc);}</style><![endif]-->
+<!--data tables for structure-->
+
+<script src="js/jquery.dataTables.js"></script>
 
 <script type="text/javascript" src="js/jquery.1.8.3.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
@@ -105,6 +110,66 @@ function resizeText() {
 
 
 <section id="container">
+<?php
+  $servername     = "localhost";
+  $username       = "root";
+  $password       = "";
+  $world          = "conectify";
+  $con            = mysqli_connect($servername,$username,$password,$world);
+    
+?>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+<div class="row">
+
+<table class="table" id="table_id" class="display">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Birthday</th>
+    <th>Address ln. 1</th>
+    <th>Address ln. 2</th>
+    <th>City</th>
+    <th>State</th>
+    <th>ZIP</th>
+    <th>Country</th>
+    <th>Facebook</th>
+    <th>Twitter</th>
+    <th>LinkedIn</th>
+  </tr>
+</thead>
+<tbody>
+  <?php $contacts = mysqli_query($con, "SELECT * FROM contacts");
+  while ($vrstica = mysqli_fetch_array($contacts))
+    { 
+    ?>
+
+  <tr>
+    <td><?php echo $vrstica["name"] ?></td>
+    <td><?php echo $vrstica["surname"] ?></td>
+    <td><?php echo $vrstica["birthday"] ?></td>
+    <td><?php echo $vrstica["address_1"] ?></td>
+    <td><?php echo $vrstica["address_2"] ?></td>
+    <td><?php echo $vrstica["city"] ?></td>
+    <td><?php echo $vrstica["region"] ?></td>
+    <td><?php echo $vrstica["zip"] ?></td>
+    <td><?php echo $vrstica["country"] ?></td>
+    <td><?php echo $vrstica["facebook"] ?></td>
+    <td><?php echo $vrstica["twitter"] ?></td>
+    <td><?php echo $vrstica["linkedin"] ?></td>
+  </tr>
+  <?php  } 
+  mysqli_close($con);
+  ?>
+  </tbody>
+  </table>
+</div>
+</div>
+
+
+
+
+
 </section>
 
 <footer>
@@ -292,9 +357,14 @@ $( window ).load(function() {
   return false;
 });
 </script>
+
 <script src="js/validator.js"></script>
-
-
+<script src="js/jquery.dataTables.js"></script>
+<script>
+$(document).ready( function () {
+    $('#table_id').DataTable();
+} );
+</script>
 </body>
 </html>
 
