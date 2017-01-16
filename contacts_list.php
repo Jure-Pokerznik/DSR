@@ -16,18 +16,13 @@
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.css">
 <link rel="stylesheet" type="text/css" href="jquery-ui.theme.css">
 <link rel="stylesheet" type="text/css" href="bootstrap-datepicker.css">
-
-
-
-
 <link href='http://fonts.googleapis.com/css?family=Lato:400,900,700,700italic,400italic,300italic,300,100italic,100,900italic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Dosis:400,500,700,800,600,300,200' rel='stylesheet' type='text/css'>
 
 <!--[if IE]><style type="text/css">.pie {behavior:url(PIE.htc);}</style><![endif]-->
-<!--data tables for structure-->
-
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
 <script src="js/jquery.dataTables.js"></script>
-
 <script type="text/javascript" src="js/jquery.1.8.3.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/jquery-scrolltofixed.js"></script>
@@ -38,7 +33,31 @@
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+<script>
+        $(document).ready(function(){
+          //Skrije vse 
+          $(".hideall").hide();
 
+          $("#showall").click(function(){
+           $(".opisPizzarije").show("slide");
+    });
+          $("#button1").click(function(){
+           $(".box1").toggle("slide");
+    });
+          $("#button2").click(function(){
+           $(".box2").toggle("slide");
+    });
+          $("#button3").click(function(){
+           $(".box3").toggle("slide");
+    });
+          $("#button4").click(function(){
+           $(".box4").toggle("slide");
+    });
+          $("#button5").click(function(){
+           $(".box5").toggle("slide");
+    });
+});
+</script>
 <!--[if lt IE 9]>
     <script src="js/respond-1.1.0.min.js"></script>
     <script src="js/html5shiv.js"></script>
@@ -76,7 +95,14 @@ function resizeText() {
 </script>
 </head>
 <body>
-
+<?php
+  $servername     = "localhost";
+  $username       = "root";
+  $password       = "";
+  $world          = "conectify";
+  $con            = mysqli_connect($servername,$username,$password,$world);
+    
+?>
 
 <header id="header_outer">
   <div class="container">
@@ -106,71 +132,110 @@ function resizeText() {
   <div class="container">
     <h2>Contacts List</h2>
   </div>
+</section id="container">
+
+<section id="buttons">
+<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+<button id="button1" class="btn btn-default">Name search</button>
+<button id="button2" class="btn btn-default">Surname search</button>
+<button id="button3" class="btn btn-default">City search</button>
+<button id="button4" class="btn btn-default">Show all contacts</button>
+</div>
 </section>
-
-
 <section id="container">
-<?php
-  $servername     = "localhost";
-  $username       = "root";
-  $password       = "";
-  $world          = "conectify";
-  $con            = mysqli_connect($servername,$username,$password,$world);
-    
-?>
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
-<div class="row">
+<div class="hideall box1"> <h2>Name search</h2>
+  
+  <div class="row">
+  <div class="col-lg-8 col-sm-8 col-lg-offset-2 col-sm-offset-2">
 
-<table class="table" id="table_id" class="display">
-<thead>
-  <tr>
-    <th>Name</th>
-    <th>Surname</th>
-    <th>Birthday</th>
-    <th>Address ln. 1</th>
-    <th>Address ln. 2</th>
-    <th>City</th>
-    <th>State</th>
-    <th>ZIP</th>
-    <th>Country</th>
-    <th>Facebook</th>
-    <th>Twitter</th>
-    <th>LinkedIn</th>
-  </tr>
-</thead>
-<tbody>
-  <?php $contacts = mysqli_query($con, "SELECT * FROM contacts");
-  while ($vrstica = mysqli_fetch_array($contacts))
-    { 
-    ?>
+    <form role="form" method="post" action="search_contacts0.php" id="search">
+      <div class="form-group">
+       <input type="text" name="contact" id="contact" class="form-control">
+      </div>
+      <div align="right">
+        <input type="submit" id="search" class="btn btn-primary" value="Search!">
+      </div>
+    </form>
 
-  <tr>
-    <td><?php echo $vrstica["name"] ?></td>
-    <td><?php echo $vrstica["surname"] ?></td>
-    <td><?php echo $vrstica["birthday"] ?></td>
-    <td><?php echo $vrstica["address_1"] ?></td>
-    <td><?php echo $vrstica["address_2"] ?></td>
-    <td><?php echo $vrstica["city"] ?></td>
-    <td><?php echo $vrstica["region"] ?></td>
-    <td><?php echo $vrstica["zip"] ?></td>
-    <td><?php echo $vrstica["country"] ?></td>
-    <td><?php echo $vrstica["facebook"] ?></td>
-    <td><?php echo $vrstica["twitter"] ?></td>
-    <td><?php echo $vrstica["linkedin"] ?></td>
-  </tr>
-  <?php  } 
-  mysqli_close($con);
+  </div>
+  </div>
+  </div>
+
+  <div class="hideall box2"> <h2>Surname search</h2>
+  
+  <div class="row">
+  <div class="col-lg-8 col-sm-8 col-lg-offset-2 col-sm-offset-2">
+
+    <form role="form" method="post" action="search_contacts.php" id="search">
+      <div class="form-group">
+       <input type="text" name="contact" id="contact" class="form-control">
+      </div>
+      <div align="right">
+        <input type="submit" id="search" class="btn btn-primary" value="Search!">
+      </div>
+    </form>
+
+  </div>
+  </div>
+  </div>
+  <div class="hideall box3"> <h2>City search</h2>
+    <div class="row">
+  <div class="col-lg-8 col-sm-8 col-lg-offset-2 col-sm-offset-2">
+
+    <form role="form" method="post" action="search_contacts2.php" id="search">
+      <div class="form-group">
+       <input type="text" name="contact" id="contact" class="form-control">
+      </div>
+      <div align="right">
+        <input type="submit" id="search" class="btn btn-primary" value="Search!">
+      </div>
+    </form>
+
+  </div>
+  </div>
+  </div>
+
+
+  <div class="hideall box4">
+ <h2>All contacts</h2>
+  <?php
+    $all_contacts = mysqli_query($con, "SELECT * FROM contacts ORDER BY surname, birthday ASC");
+    while($line = mysqli_fetch_array($all_contacts)){ 
+      ?>
+      
+      <div class="col-lg-3 col-md-5 col-sm-5 col-xs-8 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-xs-offset-2">
+        <div class="row">
+
+ <?php if($line == "nekaj" ){
+
+ }
+ else if {
+
+ }
+ else
+ ?> 
+<!--        <h3><?php echo $line["name"]." ".$line["surname"]."</h3>"?>
+        Birthday: <?php echo $line["birthday"]."<br /> 
+        Address: ".$line["address_1"].", ".$line["address_2"]."<br />
+        ".$line["zip"].", ".$line["city"]."<br />
+        ".$line["region"].", ".$line["country"]."<br />"?>
+        Facebook: <?php echo $line["facebook"]?><br />
+        Twitter: <?php echo $line["twitter"]?><br />
+        LinkedIn: <?php echo $line["linkedin"]?><br /><br /> -->
+
+        </div>
+      </div>
+      <?php  }; 
+      mysqli_close($con);
   ?>
-  </tbody>
-  </table>
 </div>
-</div>
-
-
-
-
-
 </section>
+
+
+
+
+
+
 
 <footer>
 <div class="container">

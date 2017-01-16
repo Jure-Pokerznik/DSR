@@ -130,106 +130,49 @@ function resizeText() {
 
 <section id="container">
   <div class="container">
-    <h2>Events</h2>
+    <h2>Name search</h2>
   </div>
 </section id="container">
 
-<section id="buttons">
-<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
-<!--<button id="button1" class="btn btn-default">Date search</button>-->
-<button id="button2" class="btn btn-default">City search</button>
-<!--<button id="button3" class="btn btn-default">Country search</button>-->
-<button id="button4" class="btn btn-default">Show all events</button>
-</div>
-</section>
-<section id="container">
-<!--<div class="hideall box1"> <h2>Date search</h2>
-  
-  <div class="row">
-  <div class="col-lg-8 col-sm-8 col-lg-offset-2 col-sm-offset-2">
+<?php
+if(isset($_POST['contact'])){
+  $search = $_POST["contact"];
+  $result = mysqli_query($con, "SELECT * FROM contacts WHERE name='$search' ORDER BY name, surname ASC");
+ 
+ //echo $search;
 
-    <form role="form" method="post" action="search_events1.php" id="search">
-      <div class="form-group">
-       <input type="text" name="contact" id="contact" class="form-control">
-      </div>
-      <div align="right">
-        <input type="submit" id="search" class="btn btn-primary" value="Search!">
-      </div>
-    </form>
-
-  </div>
-  </div>
-  </div>-->
-
-  <div class="hideall box2"> <h2>City search</h2>
-  
-  <div class="row">
-  <div class="col-lg-8 col-sm-8 col-lg-offset-2 col-sm-offset-2">
-
-    <form role="form" method="post" action="search_events2.php" id="search">
-      <div class="form-group">
-       <input type="text" name="event" id="event" class="form-control">
-      </div>
-      <div align="right">
-        <input type="submit" id="search" class="btn btn-primary" value="Search!">
-      </div>
-    </form>
-
-  </div>
-  </div>
-  </div>
-  <!--
-  <div class="hideall box3"> <h2>Country search</h2>
-    <div class="row">
-  <div class="col-lg-8 col-sm-8 col-lg-offset-2 col-sm-offset-2">
-
-    <form role="form" method="post" action="search_events3.php" id="search">
-      <div class="form-group">
-       <input type="text" name="contact" id="contact" class="form-control">
-      </div>
-      <div align="right">
-        <input type="submit" id="search" class="btn btn-primary" value="Search!">
-      </div>
-    </form>
-
-  </div>
-  </div>
-  </div> -->
-
-   <div class="hideall box4">
- <h2>All events</h2>
-  <?php
-    $all_events = mysqli_query($con, "SELECT * FROM events ORDER BY ename, s_date ASC");
-    while($line = mysqli_fetch_array($all_events)){ 
+ while ($line = mysqli_fetch_array($result)){ 
       ?>
       
       <div class="col-lg-3 col-md-5 col-sm-5 col-xs-8 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-xs-offset-2">
         <div class="row">
-        <h3><?php echo $line["ename"]."</h3>
-        Date: "?>
-        <?php echo $line["s_date"]?><br />
-        Contact: <?php echo $line["contact_email"]?> or <?php echo $line["phone_nr"]?><br />
-        Address: <?php echo $line["address_1"].", ".$line["address_2"]?><br />
-        <?php echo $line["zip"].", ".$line["city"]?><br />
-        <?php echo $line["region"].", ".$line["country"]?><br />
-        <b>Description: </b>
-        <?php echo $line["description"]?><br /><br />
-
-        
+        <h3><?php echo $line["name"]." ".$line["surname"]."</h3>"?>
+        Birthday: <?php echo $line["birthday"]."<br /> 
+        Address: ".$line["address_1"].", ".$line["address_2"]."<br />
+        ".$line["zip"].", ".$line["city"]."<br />
+        ".$line["region"].", ".$line["country"]."<br />"?>
+        Facebook: <?php echo $line["facebook"]?><br />
+        Twitter: <?php echo $line["twitter"]?><br />
+        LinkedIn: <?php echo $line["linkedin"]?><br /><br />
       
         </div>
       </div>
       <?php  }; 
       mysqli_close($con);
-  ?>
-</div>
-</section>
+ 
 
+
+}
+else{
+  echo "Error! No contacts!";
+};
+
+?>
 
 
 <footer>
 <div class="container">
-    <div class=" footer_bottom"> <span>Contactify - Naloga 3 pri predmetu DSR 2016 | <a href="http://bootstraptaste.com/">Bootstrap Themes</a> by BootstrapTaste </span> </div>
+    <div class="footer_bottom"> <span>Contactify - Naloga 3 pri predmetu DSR 2016 | <a href="http://bootstraptaste.com/">Bootstrap Themes</a> by BootstrapTaste </span> </div>
     <!-- 
         All links in the footer should remain intact. 
         Licenseing information is available at: http://bootstraptaste.com/license/
